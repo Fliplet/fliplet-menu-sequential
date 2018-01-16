@@ -46,7 +46,7 @@ Fliplet().then(function() {
   // Click events
   $('li[data-fl-action]').on('click', function() {
     var linkAction = $(this).data('fl-action');
-    var nextFound = $(this).nextUntil('.active').length;
+    var nextFound = $(this).nextUntil('.active').not('.fl-menu-arrow').length;
     
     if (nextFound > 0) {
       revertLinkAction = revertTransition(linkAction);
