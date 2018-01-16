@@ -1,10 +1,21 @@
+<!-- SWIPE HANDLERS -->
+<div class="fl-menu-swipe-right-handler"></div>
+<div class="fl-menu-swipe-left-handler"></div>
+<!-- END OF SWIPE HANDLERS -->
+
 <!-- MENU -->
 <div class="fl-viewport-menu {{location}}">
   {{#if pages}}
   <ul class="main-menu">
+  	<li class="fl-menu-arrow fl-menu-prev">
+      <i class="fa fa-angle-left"></i> 
+    </li>
     {{#each pages}}
-    <li class="linked" data-fl-navigate='{{{action}}}'></li>
+    <li class="linked" data-fl-navigate='{{{action}}}' data-page-id="{{pageId}}"></li>
     {{/each}}
+    <li class="fl-menu-arrow fl-menu-next">
+      <i class="fa fa-angle-right"></i>
+    </li>
   </ul>
   {{/if}}
 </div>

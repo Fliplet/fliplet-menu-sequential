@@ -12,10 +12,11 @@
       "bootstrap",
       "font-awesome",
       "fliplet-core",
-      "handlebars"
+      "hammer.js"
     ],
     "assets": [
       "css/menu.css",
+      "js/jquery.hammer.js",
       "js/menu.js"
     ]
   },

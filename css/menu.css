@@ -2,7 +2,6 @@
 .fl-with-bottom-menu {
   -webkit-transition: padding 0.2s;
   transition: padding 0.2s;
-  margin-bottom: 44px;
 }
 
 .fl-with-bottom-menu.fl-bottom-menu-hidden {
@@ -26,21 +25,94 @@
   padding: 4px 10px;
   border-radius: 14px;
   display: flex;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
 }
 
-.fl-viewport-menu ul li {
+.fl-viewport-menu ul.init {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fl-viewport-menu ul li.linked {
   width: 10px;
   height: 10px;
   border-radius: 10px;
-  margin-right: 8px;
+  margin-left: 8px;
   background-color: rgba(255,255,255,0.5);
   cursor: pointer;
 }
 
-.fl-viewport-menu ul li:last-child {
-  margin-right: 0;
+.fl-viewport-menu ul li:nth-child(2) {
+  margin-left: 0;
 }
 
-.fl-viewport-menu ul li.active {
+.fl-viewport-menu ul li.linked.active {
   background-color: #ffffff;
+}
+
+.fl-viewport-menu ul li.fl-menu-arrow {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (min-width: 640px) {
+  .fl-viewport-menu ul {
+    position: relative;
+    height: 40px;
+    border-radius: 40px;
+    font: normal normal normal 14px/1 FontAwesome;
+    padding: 4px 50px;
+    align-items: center;
+  }
+  .fl-viewport-menu ul .fl-menu-prev {
+    left: 0;
+  }
+  .fl-viewport-menu ul .fl-menu-next {
+    right: 0;
+  }
+  .fl-viewport-menu ul li.linked {
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    margin-left: 10px;
+  }
+
+  .fl-viewport-menu ul li:nth-child(2) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .fl-viewport-menu ul li.fl-menu-arrow.show {
+    display: none !important;
+  }
+}
+
+.fl-menu-swipe-right-handler {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 15px;
+  z-index: 0;
+}
+
+.fl-menu-swipe-left-handler {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  z-index: 0;
 }
