@@ -101,7 +101,7 @@
 }
 
 .fl-menu-swipe-right-handler {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -110,7 +110,7 @@
 }
 
 .fl-menu-swipe-left-handler {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;

@@ -17,6 +17,29 @@ Fliplet().then(function() {
     }
   }
 
+  function revertTransition(linkAction) {
+    var transition;
+    var direction;
+
+    transition = (linkAction.transition || 'slide').split('.');
+    direction = transition[1] || 'left';
+    transition = transition[0];
+
+    switch (direction) {
+      case 'up':
+        direction = 'down'; break;
+      case 'down':
+        direction = 'up'; break;
+      case 'right':
+        direction = 'left'; break;
+      default:
+        direction = 'right'; break;
+    }
+
+    linkAction.transition = transition + '.' + direction;
+    return linkAction;
+  }
+
   // Selects current dot
 	$('li[data-page-id="' + pageId + '"]').addClass('active');
 
@@ -27,7 +50,12 @@ Fliplet().then(function() {
   });
   $('.fl-menu-arrow.fl-menu-prev').on('click', function() {
     var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-navigate');
-    Fliplet.Navigate.to(linkAction);
+    var revertLinkAction;
+
+    if (linkAction) {
+      revertLinkAction = revertTransition(linkAction);
+      Fliplet.Navigate.to(revertLinkAction);
+    }
   });
 
   // Swipe events
@@ -41,9 +69,11 @@ Fliplet().then(function() {
 
   $('.fl-menu-swipe-right-handler').hammer().bind('swiperight', function() {
     var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-navigate');
+    var revertLinkAction;
 
     if (linkAction) {
-      Fliplet.Navigate.to(linkAction);
+      revertLinkAction = revertTransition(linkAction);
+      Fliplet.Navigate.to(revertLinkAction);
     }
   });
 
