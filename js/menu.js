@@ -44,12 +44,24 @@ Fliplet().then(function() {
 	$('li[data-page-id="' + pageId + '"]').addClass('active');
 
   // Click events
+  $('li[data-fl-action]').on('click', function() {
+    var linkAction = $(this).data('fl-action');
+    var nextFound = $(this).nextUntil('.active').length;
+    
+    if (nextFound > 0) {
+      revertLinkAction = revertTransition(linkAction);
+      Fliplet.Navigate.to(revertLinkAction);
+      return;
+    }
+
+    Fliplet.Navigate.to(linkAction);
+  });
   $('.fl-menu-arrow.fl-menu-next').on('click', function() {
-    var linkAction = $('li.active').next().not('.fl-menu-arrow').data('fl-navigate');
+    var linkAction = $('li.active').next().not('.fl-menu-arrow').data('fl-action');
     Fliplet.Navigate.to(linkAction);
   });
   $('.fl-menu-arrow.fl-menu-prev').on('click', function() {
-    var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-navigate');
+    var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-action');
     var revertLinkAction;
 
     if (linkAction) {
@@ -60,15 +72,14 @@ Fliplet().then(function() {
 
   // Swipe events
   $('.fl-menu-swipe-left-handler').hammer().bind('swipeleft', function() {
-    var linkAction = $('li.active').next().not('.fl-menu-arrow').data('fl-navigate');
+    var linkAction = $('li.active').next().not('.fl-menu-arrow').data('fl-action');
 
     if (linkAction) {
       Fliplet.Navigate.to(linkAction);
     }
   });
-
   $('.fl-menu-swipe-right-handler').hammer().bind('swiperight', function() {
-    var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-navigate');
+    var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-action');
     var revertLinkAction;
 
     if (linkAction) {
