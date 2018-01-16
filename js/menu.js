@@ -46,9 +46,10 @@ Fliplet().then(function() {
   // Click events
   $('li[data-fl-action]').on('click', function() {
     var linkAction = $(this).data('fl-action');
-    var nextFound = $(this).nextUntil('.active').not('.fl-menu-arrow').length;
-    
-    if (nextFound > 0) {
+    var foundElements = $(this).nextUntil('li.active');
+    var lengthOfFound = $(this).nextUntil('li.active').length;
+
+    if (lengthOfFound === 0 || $(foundElements[lengthOfFound - 1]).next().hasClass('active')) {
       revertLinkAction = revertTransition(linkAction);
       Fliplet.Navigate.to(revertLinkAction);
       return;
