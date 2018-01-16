@@ -40,13 +40,13 @@
   width: 10px;
   height: 10px;
   border-radius: 10px;
-  margin-left: 8px;
+  margin: 0 0 0 8px;
   background-color: rgba(255,255,255,0.5);
   cursor: pointer;
 }
 
 .fl-viewport-menu ul li:nth-child(2) {
-  margin-left: 0;
+  margin: 0;
 }
 
 .fl-viewport-menu ul li.linked.active {
@@ -85,11 +85,11 @@
     width: 14px;
     height: 14px;
     border-radius: 14px;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
   }
 
   .fl-viewport-menu ul li:nth-child(2) {
-    margin-left: 0;
+    margin: 0;
   }
 }
 
