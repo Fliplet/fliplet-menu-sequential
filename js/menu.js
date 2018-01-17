@@ -72,14 +72,14 @@ Fliplet().then(function() {
   });
 
   // Swipe events
-  $('.fl-menu-swipe-left-handler').hammer().bind('swipeleft', function() {
+  $('body').hammer().bind('swipeleft', function() {
     var linkAction = $('li.active').next().not('.fl-menu-arrow').data('fl-action');
 
     if (linkAction) {
       Fliplet.Navigate.to(linkAction);
     }
   });
-  $('.fl-menu-swipe-right-handler').hammer().bind('swiperight', function() {
+  $('body').hammer().bind('swiperight', function() {
     var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-action');
     var revertLinkAction;
 
