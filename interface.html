@@ -7,18 +7,21 @@
 
     <div class="form-group clearfix">
       <div class="col-sm-4 control-label">
-        <label>Select where do you want the menu</label>
+        <label>Do you want to show navigation controls?</label>
       </div>
       <div class="col-sm-8">
-      <label for="drop-down" class="select-proxy-display">
-        <select id="menu-location" data-label="select" class="hidden-select form-control">
-          <option value="">-- Select an option</option>
-          <option value="menuBottom">At the bottom</option>
-          <option value="menuTop">At the top</option>
-        </select>
-        <span class="icon fa fa-chevron-down"></span>
-        <span class="select-value-proxy">-- Select an option</span>
-      </label>
+        <div class="radio radio-icon">
+          <input type="radio" id="controls-menu" name="controls-menu" value="yes">
+          <label for="controls-menu">
+            <span class="check"><i class="fa fa-circle"></i></span> <strong>Yes</strong> - Users can navigate between screens using a navigation bar, but they can still use swipe gestures.
+          </label>
+        </div>
+        <div class="radio radio-icon">
+          <input type="radio" id="no-controls-menu" name="controls-menu" value="no">
+          <label for="no-controls-menu">
+            <span class="check"><i class="fa fa-circle"></i></span> <strong>No</strong> - Users can only use swipe gestures to navigate between screens.
+          </label>
+        </div>
       </div>
     </div>
 

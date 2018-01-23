@@ -1,9 +1,35 @@
+var $menuElement = $('[data-name="Sequential"]');
+var menuInstanceId = $menuElement.data('id');
+var data = Fliplet.Widget.getData(menuInstanceId) || {};
+var deviceWidth = $('body').width();
+var tabletBreakPoint = 640;
+
+if (typeof data.controls === 'undefined' || data.controls || deviceWidth >= tabletBreakPoint) {
+  $('body').addClass('fl-minimal-padding');
+}
+
+if (typeof data.controls !== 'undefined' && !data.controls) {
+  $('.fl-viewport-menu').addClass('to-hide');
+}
+
+$(window).resize(function() {
+  deviceWidth = $('body').width();
+  if (deviceWidth <= tabletBreakPoint && !data.controls) {
+    $('body').removeClass('fl-minimal-padding');
+    return;
+  }
+  if (deviceWidth >= tabletBreakPoint && !data.controls) {
+    $('body').addClass('fl-minimal-padding');
+    return;
+  }
+});
+
 Fliplet().then(function() {
 	var pageId = Fliplet.Env.get('pageId');
 
   function checkNavigation() {
-    var backNavigation = $('li.active').prev().not('.fl-menu-arrow').length;
-    var forwardNavigation = $('li.active').next().not('.fl-menu-arrow').length;
+    var backNavigation = $('.fl-viewport-menu li.active').prev().not('.fl-menu-arrow').length;
+    var forwardNavigation = $('.fl-viewport-menu li.active').next().not('.fl-menu-arrow').length;
 
     if (backNavigation > 0) {
       $('.fl-menu-arrow.fl-menu-prev').addClass('show');
@@ -41,10 +67,10 @@ Fliplet().then(function() {
   }
 
   // Selects current dot
-	$('li[data-page-id="' + pageId + '"]').addClass('active');
+	$('.fl-viewport-menu li[data-page-id="' + pageId + '"]').addClass('active');
 
   // Click events
-  $('li[data-fl-action]').on('click', function() {
+  $('.fl-viewport-menu li[data-fl-action]').on('click', function() {
     var linkAction = $(this).data('fl-action');
     var foundElements = $(this).nextUntil('li.active');
     var lengthOfFound = $(this).nextUntil('li.active').length;
@@ -58,11 +84,11 @@ Fliplet().then(function() {
     Fliplet.Navigate.to(linkAction);
   });
   $('.fl-menu-arrow.fl-menu-next').on('click', function() {
-    var linkAction = $('li.active').next().not('.fl-menu-arrow').data('fl-action');
+    var linkAction = $('.fl-viewport-menu li.active').next().not('.fl-menu-arrow').data('fl-action');
     Fliplet.Navigate.to(linkAction);
   });
   $('.fl-menu-arrow.fl-menu-prev').on('click', function() {
-    var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-action');
+    var linkAction = $('.fl-viewport-menu li.active').prev().not('.fl-menu-arrow').data('fl-action');
     var revertLinkAction;
 
     if (linkAction) {
@@ -73,14 +99,14 @@ Fliplet().then(function() {
 
   // Swipe events
   $('body').hammer().bind('swipeleft', function() {
-    var linkAction = $('li.active').next().not('.fl-menu-arrow').data('fl-action');
+    var linkAction = $('.fl-viewport-menu li.active').next().not('.fl-menu-arrow').data('fl-action');
 
     if (linkAction) {
       Fliplet.Navigate.to(linkAction);
     }
   });
   $('body').hammer().bind('swiperight', function() {
-    var linkAction = $('li.active').prev().not('.fl-menu-arrow').data('fl-action');
+    var linkAction = $('.fl-viewport-menu li.active').prev().not('.fl-menu-arrow').data('fl-action');
     var revertLinkAction;
 
     if (linkAction) {

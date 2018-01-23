@@ -37,6 +37,10 @@
   visibility: visible;
 }
 
+.fl-viewport-menu.to-hide ul {
+  background-color: transparent;
+}
+
 .fl-viewport-menu ul li.linked {
   width: 10px;
   height: 10px;
@@ -44,6 +48,10 @@
   margin: 0 0 0 8px;
   background-color: rgba(255,255,255,0.5);
   cursor: pointer;
+}
+
+.fl-viewport-menu.to-hide ul li.linked {
+  display: none;
 }
 
 .fl-viewport-menu ul li:nth-child(2) {
@@ -57,23 +65,34 @@
 .fl-viewport-menu ul li.fl-menu-arrow {
   position: absolute;
   top: 0;
-  width: 40px;
-  height: 40px;
-  font-size: 40px;
-  line-height: 40px;
+  width: 30px;
+  height: 30px;
+  font-size: 29px;
+  line-height: 30px;
   text-align: center;
   color: #ffffff;
   cursor: pointer;
   display: none;
 }
 
+.fl-viewport-menu.to-hide ul .fl-menu-prev .fa {
+  margin-left: -2px;
+}
+
+.fl-viewport-menu.to-hide ul .fl-menu-next .fa {
+  margin-right: -2px;
+}
+
 @media screen and (min-width: 640px) {
+  .fl-viewport-menu {
+    width: 33.333%;
+  }
   .fl-viewport-menu ul {
     position: relative;
-    height: 40px;
-    border-radius: 40px;
+    height: 30px;
+    border-radius: 30px;
     font: normal normal normal 14px/1 FontAwesome;
-    padding: 4px 50px;
+    padding: 0px 30px;
     align-items: center;
   }
   .fl-viewport-menu ul .fl-menu-prev {
@@ -82,11 +101,17 @@
   .fl-viewport-menu ul .fl-menu-next {
     right: 0;
   }
-  .fl-viewport-menu ul li.linked {
-    width: 14px;
-    height: 14px;
-    border-radius: 14px;
-    margin: 0 0 0 10px;
+  .fl-viewport-menu.to-hide {
+    justify-content: flex-start;
+    padding-left: 15px;
+  }
+  .fl-viewport-menu.to-hide ul .fl-menu-prev,
+  .fl-viewport-menu.to-hide ul .fl-menu-next {
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 30px;
+  }
+  .fl-viewport-menu.to-hide ul .fl-menu-next {
+    right: -15px;
   }
 
   .fl-viewport-menu ul li:nth-child(2) {

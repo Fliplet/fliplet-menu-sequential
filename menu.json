@@ -1,6 +1,6 @@
 {
-  "name": "Sequential (Minimalist)",
-  "package": "com.fliplet.menu.sequential-minimalist",
+  "name": "Sequential",
+  "package": "com.fliplet.menu.sequential",
   "version": "1.0.0",
   "icon": "img/icon.png",
   "tags": ["type:menu"],
@@ -31,6 +31,7 @@
     ]
   },
   "settings": {
-    "position": "bottom"
+    "position": "bottom",
+    "classes": ""
   }
 }
