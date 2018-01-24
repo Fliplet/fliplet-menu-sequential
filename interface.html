@@ -7,19 +7,25 @@
 
     <div class="form-group clearfix">
       <div class="col-sm-4 control-label">
-        <label>Do you want to show navigation controls?</label>
+        <label>Select the style of your menu</label>
       </div>
       <div class="col-sm-8">
         <div class="radio radio-icon">
-          <input type="radio" id="controls-menu" name="controls-menu" value="yes">
-          <label for="controls-menu">
-            <span class="check"><i class="fa fa-circle"></i></span> <strong>Yes</strong> - Users can navigate between screens using a navigation bar, but they can still use swipe gestures.
+          <input type="radio" id="bar-menu" name="menu-style" value="bar-menu">
+          <label for="bar-menu">
+            <span class="check"><i class="fa fa-circle"></i></span> <strong>Navigation bar</strong> - With a menu bar and an overlay with the screens list. Users will also be able to swipe left/right to navigate between screens.
           </label>
         </div>
         <div class="radio radio-icon">
-          <input type="radio" id="no-controls-menu" name="controls-menu" value="no">
+          <input type="radio" id="controls-menu" name="menu-style" value="controls-menu">
+          <label for="controls-menu">
+            <span class="check"><i class="fa fa-circle"></i></span> <strong>Minimal navigation</strong> - With a minimalist navigation bar. Users will also be able to swipe left/right to navigate between screens.
+          </label>
+        </div>
+        <div class="radio radio-icon">
+          <input type="radio" id="no-controls-menu" name="menu-style" value="no-controls-menu">
           <label for="no-controls-menu">
-            <span class="check"><i class="fa fa-circle"></i></span> <strong>No</strong> - Users can only use swipe gestures to navigate between screens.
+            <span class="check"><i class="fa fa-circle"></i></span> <strong>No navigation bar</strong> - Users can only use swipe gestures to navigate between screens.
           </label>
         </div>
       </div>

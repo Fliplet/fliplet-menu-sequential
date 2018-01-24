@@ -1,17 +1,63 @@
 <!-- MENU -->
-<div class="fl-viewport-menu {{location}}">
-  {{#if pages}}
-  <ul class="main-menu">
-  	<li class="fl-menu-arrow fl-menu-prev">
-      <i class="fa fa-angle-left"></i> 
-    </li>
-    {{#each pages}}
-    <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}"></li>
-    {{/each}}
-    <li class="fl-menu-arrow fl-menu-next">
-      <i class="fa fa-angle-right"></i>
-    </li>
-  </ul>
-  {{/if}}
-</div>
+{{#if bar}}
+  <div class="fl-viewport-header">
+    {{#if pages}}
+      <span class="nav-left">
+        <i class="fa fa-angle-left"></i>
+      </span>
+      <span class="nav-center" data-fl-toggle-menu=".fl-menu">
+        <i class="fa fa-bars"></i>
+      </span>
+      <span class="nav-right">
+        <i class="fa fa-angle-right"></i>
+      </span>
+      <div class="fl-sequential-screens-helper">
+        <ul class="main-menu">
+          {{#each pages}}
+            <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}"></li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+{{else}}
+  <div class="fl-viewport-menu">
+    {{#if pages}}
+    <ul class="main-menu">
+    	<li class="fl-menu-arrow fl-menu-prev">
+        <i class="fa fa-angle-left"></i> 
+      </li>
+      {{#each pages}}
+      <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}"></li>
+      {{/each}}
+      <li class="fl-menu-arrow fl-menu-next">
+        <i class="fa fa-angle-right"></i>
+      </li>
+    </ul>
+    {{/if}}
+  </div>
+{{/if}}
 <!-- END OF MENU -->
+<!-- MENU OVERLAY -->
+<div class="fl-menu fl-app-menu">
+  <div class="fl-menu-overlay"></div>
+  <div class="fl-menu-panel">
+    <div class="fl-menu-foot">
+      <div class="fl-app-menu-toolbar">
+        <div class="copyright">
+          <a href="#" open-about-overlay>About this app</a>
+        </div>
+      </div>
+    </div>
+    <div class="fl-menu-body has-no-logo">
+      <div class="fl-list-default">
+        <ul class="main-menu">
+          {{#each pages}}
+          <li class="linked" data-fl-navigate='{{{action}}}' data-page-id="{{pageId}}"><i class="fa fa-angle-right" aria-hidden="true"></i><span class="internal-link buttonControl">{{label}}</span></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END OF MENU OVERLAY -->

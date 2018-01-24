@@ -1,24 +1,25 @@
 var widgetId = Fliplet.Widget.getDefaultId();
 var data = Fliplet.Widget.getData(widgetId) || {};
 
-if (typeof data.controls === 'undefined' || data.controls) {
-  $('input[name="controls-menu"][value="yes"]').prop('checked', true);
+if (typeof data.style === 'undefined' || data.style === 'bar-menu') {
+  $('input[name="menu-style"][value="bar-menu"]').prop('checked', true);
 } else {
-  $('input[name="controls-menu"][value="no"]').prop('checked', true);
+  $('input[name="menu-style"][value="' + data.style + '"]').prop('checked', true);
 }
 
 Fliplet.Widget.onSaveRequest(function() {
-  var controls;
-  var controlsMenu = $('input[name="controls-menu"]:checked').val();
+  var style = $('input[name="menu-style"]:checked').val();
+  var bar;
 
-  if (controlsMenu === 'yes') {
-    controls = true;
+  if (style === 'bar-menu') {
+    bar = true;
   } else {
-    controls = false;
+    bar = false;
   }
 
   Fliplet.Widget.save({
-    controls: controls
+    bar: bar,
+    style: style
   }).then(function() {
     Fliplet.Widget.complete();
   });
