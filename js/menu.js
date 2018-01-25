@@ -12,7 +12,7 @@ if (typeof data.controls === 'undefined' || data.style === 'bar-menu') {
   $('body').addClass('fl-bar-padding');
 }
 
-if (data.style === 'controls-menu' || deviceWidth >= tabletBreakPoint) {
+if (data.style === 'controls-menu' || (deviceWidth >= tabletBreakPoint && data.style !== 'bar-menu')) {
   $('body').addClass('fl-minimal-padding');
 }
 
