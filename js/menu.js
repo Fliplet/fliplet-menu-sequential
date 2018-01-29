@@ -1,4 +1,4 @@
-var $menuElement = $('[data-name="Sequential"]');
+var $menuElement = $('[data-name="Sequential swipe"]');
 var menuInstanceId = $menuElement.data('id');
 var data = Fliplet.Widget.getData(menuInstanceId) || {};
 var deviceWidth = $('body').width();
@@ -8,7 +8,7 @@ if (Modernizr.backdropfilter) {
   $('.body').addClass('backdropfilter');
 }
 
-if (typeof data.controls === 'undefined' || data.style === 'bar-menu') {
+if (typeof data.style === 'undefined' || data.style === 'bar-menu') {
   $('body').addClass('fl-bar-padding');
 }
 
@@ -193,7 +193,7 @@ Fliplet().then(function() {
   }
 
   // INIT
-  if (typeof data.controls !== 'undefined' && data.style !== 'bar-menu') {
+  if (typeof data.style !== 'undefined' && data.style !== 'bar-menu') {
     attachNonBarHandlers();
     checkNavigation();
 
