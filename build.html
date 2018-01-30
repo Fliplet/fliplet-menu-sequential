@@ -1,42 +1,40 @@
 <!-- MENU -->
-{{#if bar}}
-  <div class="fl-viewport-header">
-    {{#if pages}}
-      <span class="nav-left">
-        <i class="fa fa-angle-left"></i>
-      </span>
-      <span class="nav-center" data-fl-toggle-menu=".fl-menu">
-        <i class="fa fa-bars"></i>
-      </span>
-      <span class="nav-right">
-        <i class="fa fa-angle-right"></i>
-      </span>
-      <div class="fl-sequential-screens-helper">
-        <ul class="main-menu">
-          {{#each pages}}
-            <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}"></li>
-          {{/each}}
-        </ul>
-      </div>
-    {{/if}}
-  </div>
-{{else}}
-  <div class="fl-viewport-menu">
-    {{#if pages}}
-    <ul class="main-menu">
-    	<li class="fl-menu-arrow fl-menu-prev">
-        <i class="fa fa-angle-left"></i> 
-      </li>
-      {{#each pages}}
-      <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}"></li>
-      {{/each}}
-      <li class="fl-menu-arrow fl-menu-next">
-        <i class="fa fa-angle-right"></i>
-      </li>
-    </ul>
-    {{/if}}
-  </div>
-{{/if}}
+<div class="fl-viewport-header hidden">
+  {{#if pages}}
+    <span class="nav-left-arrow">
+      <i class="fa fa-angle-left"></i>
+    </span>
+    <span class="nav-center" data-fl-toggle-menu=".fl-menu">
+      <i class="fa fa-bars"></i>
+    </span>
+    <span class="nav-right-arrow">
+      <i class="fa fa-angle-right"></i>
+    </span>
+    <div class="fl-sequential-screens-helper">
+      <ul class="main-menu">
+        {{#each pages}}
+          <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}"></li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+</div>
+<!-- Minimal Menu Nav -->
+<div class="fl-viewport-menu hidden">
+  {{#if pages}}
+  <ul class="main-menu">
+  	<li class="fl-menu-arrow fl-menu-prev">
+      <i class="fa fa-angle-left"></i> 
+    </li>
+    {{#each pages}}
+    <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}"></li>
+    {{/each}}
+    <li class="fl-menu-arrow fl-menu-next">
+      <i class="fa fa-angle-right"></i>
+    </li>
+  </ul>
+  {{/if}}
+</div>
 <!-- END OF MENU -->
 <!-- MENU OVERLAY -->
 <div class="fl-menu fl-app-menu">
