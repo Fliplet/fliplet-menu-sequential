@@ -31,6 +31,7 @@
     ]
   },
   "settings": {
-    "position": "bottom"
+    "position": "bottom",
+    "gifIcon": "img/icon.gif"
   }
 }
