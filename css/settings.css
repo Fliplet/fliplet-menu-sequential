@@ -2,3 +2,7 @@
 .widget-holder {
   padding: 15px;
 }
+
+.radio.radio-icon + .radio.radio-icon {
+  margin-top: 0;
+}

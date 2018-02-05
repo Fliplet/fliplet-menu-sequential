@@ -39,7 +39,7 @@
 .fl-viewport-header .nav-center,
 .fl-viewport-header .nav-left-arrow,
 .fl-viewport-header .nav-right-arrow {
-  width: 44px;
+  width: 64px;
   height: 44px;
   font-size: 1.5em;
   cursor: pointer;
@@ -55,17 +55,17 @@
 .fl-viewport-header .nav-center .fa,
 .fl-viewport-header .nav-left-arrow .fa,
 .fl-viewport-header .nav-right-arrow .fa {
-  width: 44px;
+  width: 64px;
   height: 44px;
   line-height: 44px;
 }
 
 .fl-viewport-header .nav-left-arrow {
-  left: 30%;
+  left: 15%;
 }
 
 .fl-viewport-header .nav-right-arrow {
-  right: 30%;
+  right: 15%;
 }
 
 .fl-sequential-screens-helper {
@@ -78,6 +78,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,7 +143,13 @@
   text-align: center;
   color: #333;
   cursor: pointer;
-  display: none;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.fl-viewport-menu ul li.fl-menu-arrow.show {
+  pointer-events: all;
+  opacity: 1;
 }
 
 .fl-viewport-menu ul .fl-menu-arrow .fa {
@@ -161,7 +168,10 @@
 
 @media screen and (min-width: 640px) {
   .fl-viewport-menu {
-    width: 33.333%;
+    max-width: 33.333%;
+    padding-left: 10px;
+    padding-right: 0;
+    justify-content: flex-start;
   }
   .fl-viewport-menu ul {
     position: relative;
@@ -177,10 +187,6 @@
   .fl-viewport-menu ul .fl-menu-next {
     right: 0;
   }
-  .fl-viewport-menu.to-hide {
-    justify-content: flex-start;
-    padding-left: 15px;
-  }
   .fl-viewport-menu.to-hide ul .fl-menu-prev,
   .fl-viewport-menu.to-hide ul .fl-menu-next {
     background: rgba(255, 255, 255, 0.85);
@@ -193,6 +199,14 @@
 
   .fl-viewport-menu ul li:nth-child(2) {
     margin: 0;
+  }
+
+  .fl-viewport-header .nav-left-arrow {
+    left: 30%;
+  }
+
+  .fl-viewport-header .nav-right-arrow {
+    right: 30%;
   }
 }
 
@@ -256,15 +270,12 @@
   opacity: 1;
 }
 
-.fl-menu-panel {
+.fl-menu-panel-swipe {
   position: absolute;
   left: 16px;
   right: 16px;
   top: 16px;
   bottom: 50px;
-  background: #fff;
-  -webkit-transition: -webkit-transform 0.2s ease-out, opacity 0.2s linear;
-  -webkit-transform: translate3d(0, 16px, 0);
   opacity: 0;
   pointer-events: none;
   border-radius: 0;
@@ -275,9 +286,13 @@
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+  -webkit-transition: -webkit-transform 0.2s ease-out, opacity 0.2s linear;
+  transition: -webkit-transform 0.2s ease-out, opacity 0.2s linear;
+  -webkit-transform: translate3d(0, 16px, 0);
+  transform: translate3d(0, 16px, 0);
 }
 
-.fl-menu-panel:after {
+.fl-menu-panel-swipe:after {
   content: '';
   width: 0;
   height: 0;
@@ -293,55 +308,58 @@
   margin-right: -11px;
 }
 
-.fl-menu-default-left .fl-menu-panel:before {
+.fl-menu-panel-wrapper {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding-bottom: 21px;
+  max-height: 0%;
+  overflow: auto;
+  -webkit-transition: all 0s ease-out 0s;
+  transition: all 0s ease-out 0s;
+}
+
+.fl-menu-default-left .fl-menu-panel-swipe:before {
   right: auto;
   left: 5px;
 }
 
-.fl-app-menu.hasGoBack .fl-menu-panel:before {
+.fl-app-menu.hasGoBack .fl-menu-panel-swipe:before {
   left: 40px;
 }
 
-.fl-menu.active .fl-menu-panel {
+.fl-menu.active .fl-menu-panel-swipe {
   -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   opacity: 1;
   pointer-events: all;
+}
+
+
+.fl-menu.active .fl-menu-panel-swipe .fl-menu-panel-wrapper {
+  max-height: 100%;
+  -webkit-transition: all 0.5s ease-out 0.18s;
+  transition: all 0.5s ease-out 0.18s;
 }
 
 .fl-menu .fl-menu-foot {
   order: 3;
   position: absolute;
-  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: hidden;
+  z-index: 1;
 }
 
 .fl-app-menu-toolbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   text-align: right;
-  max-height: 100%;
   line-height: 21px;
-  background: #ececec;
+  background: #ffffff;
   font-size: 9px;
   font-family: Verdana;
-}
-
-.fl-app-menu-toolbar:before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 14px;
-  position: absolute;
-  bottom: -14px;
-  background: -moz-linear-gradient(top, rgba(236,236,236,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(236,236,236,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(236,236,236,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ececec', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.06);
 }
 
 .fl-app-menu-toolbar .copyright {
@@ -355,25 +373,9 @@
   height: 100%;
 }
 
-.fl-menu .fl-menu-body {
-  order: 2;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  align-items: flex-end;
-}
-
-.fl-app-menu .fl-menu-body.has-no-logo {
-  padding-bottom: 0;
-}
-
-.fl-menu.fl-app-menu .fl-menu-foot ~ .fl-menu-body {
-  top: 21px;
+.fl-menu .fl-menu-body-swipe {
+  position: relative;
+  background: #fff;
 }
 
 .fl-app-menu .fl-list-default {
@@ -383,36 +385,34 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.fl-menu-body .fl-list-default ul {
+.fl-menu-body-swipe .fl-list-default ul {
   padding: 0;
   margin: 0;
   font-size: 13px;
 }
 
-.fl-menu-panel .fl-list-default ul {
+.fl-menu-panel-swipe .fl-list-default ul {
   background: none;
   font-size: 13px;
-  display: flex;
-  flex-direction: column-reverse;
 }
 
-.fl-menu-body .fl-list-default ul > li {
+.fl-menu-body-swipe .fl-list-default ul > li {
   list-style: none;
   border-bottom: 1px solid rgba(51, 51, 51, 0.2);
   padding: 10px 10px 10px 0;
   position: relative;
 }
 
-.fl-menu-body .fl-list-default ul > li:first-child {
+.fl-menu-body-swipe .fl-list-default ul > li:last-child {
   border-bottom: none;
 }
 
-.fl-menu-body .fl-list-default ul > li.linked {
+.fl-menu-body-swipe .fl-list-default ul > li.linked {
   cursor: pointer;
   padding: 0;
 }
 
-.fl-menu-body .fl-list-default ul > li .fa {
+.fl-menu-body-swipe .fl-list-default ul > li .fa {
   display: none;
   position: absolute;
   width: 44px;
@@ -426,7 +426,7 @@
   color: #333;
 }
 
-.fl-menu-body .fl-list-default ul > li.linked .fa {
+.ffl-menu-body-swipe .fl-list-default ul > li.linked .fa {
   display: block;
 }
 
@@ -455,7 +455,7 @@
     justify-content: center;
   }
 
-  .fl-menu-panel {
+  .fl-menu-panel-swipe {
     bottom: 50px;
     top: 20%;
     width: 380px;

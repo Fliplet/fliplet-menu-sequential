@@ -39,7 +39,7 @@
 <!-- MENU OVERLAY -->
 <div class="fl-menu fl-app-menu">
   <div class="fl-menu-overlay"></div>
-  <div class="fl-menu-panel">
+  <div class="fl-menu-panel-swipe">
     <div class="fl-menu-foot">
       <div class="fl-app-menu-toolbar">
         <div class="copyright">
@@ -47,13 +47,15 @@
         </div>
       </div>
     </div>
-    <div class="fl-menu-body has-no-logo">
-      <div class="fl-list-default">
-        <ul class="main-menu">
-          {{#each pages}}
-          <li class="linked" data-fl-navigate='{{{action}}}' data-page-id="{{pageId}}"><i class="fa fa-angle-right" aria-hidden="true"></i><span class="internal-link buttonControl">{{label}}</span></li>
-          {{/each}}
-        </ul>
+    <div class="fl-menu-panel-wrapper">
+      <div class="fl-menu-body-swipe">
+        <div class="fl-list-default">
+          <ul class="main-menu">
+            {{#each pages}}
+            <li class="linked" data-fl-navigate='{{{action}}}' data-page-id="{{pageId}}"><i class="fa fa-angle-right" aria-hidden="true"></i><span class="internal-link buttonControl">{{label}}</span></li>
+            {{/each}}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
