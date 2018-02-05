@@ -1,4 +1,4 @@
-var $menuElement = $('[data-name="Sequential swipe"]');
+var $menuElement = $('[data-name="Swipe"]');
 var menuInstanceId = $menuElement.data('id');
 var data = Fliplet.Widget.getData(menuInstanceId) || {};
 var deviceWidth = $('body').width();
