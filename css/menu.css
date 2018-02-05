@@ -388,10 +388,6 @@
 .fl-menu-body-swipe .fl-list-default ul {
   padding: 0;
   margin: 0;
-  font-size: 13px;
-}
-
-.fl-menu-panel-swipe .fl-list-default ul {
   background: none;
   font-size: 13px;
 }
