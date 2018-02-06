@@ -141,6 +141,11 @@ Fliplet().then(function() {
         action: 'about-overlay'
       });
     });
+
+    $('[data-fl-toggle-menu]').click(function (event) {
+      event.preventDefault();
+      $('.fl-viewport-header .hamburger').toggleClass('is-active');
+    });
   }
 
   function attachNonBarHandlers() {

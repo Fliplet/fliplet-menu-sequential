@@ -15,6 +15,7 @@
       "hammer.js"
     ],
     "assets": [
+      "css/hamburgers.css",
       "css/menu.css",
       "js/jquery.hammer.js",
       "js/menu.js"
