@@ -4,5 +4,9 @@
 }
 
 .radio.radio-icon + .radio.radio-icon {
-  margin-top: 0;
+  margin-top: 10px;
+}
+
+.radio img {
+  max-width: 70%;
 }

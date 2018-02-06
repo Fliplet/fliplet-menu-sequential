@@ -468,12 +468,13 @@
 
 .hamburger {
   padding: 0;
-  -webkit-transform: scale(0.8);
+  -webkit-transform: scale(0.7);
   transform: scale(0.7);
+  display: flex;
 }
 
 .hamburger-box {
-  height: 20px;
+  height: 22px;
 }
 
 .hamburger-inner,

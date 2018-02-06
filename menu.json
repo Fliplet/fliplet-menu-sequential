@@ -28,7 +28,8 @@
     ],
     "assets": [
       "js/settings.js",
-      "css/settings.css"
+      "css/settings.css",
+      "img/navigation-style-1.png"
     ]
   },
   "settings": {
