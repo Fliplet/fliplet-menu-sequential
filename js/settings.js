@@ -24,3 +24,7 @@ Fliplet.Widget.onSaveRequest(function() {
     Fliplet.Widget.complete();
   });
 });
+
+Fliplet.Widget.onCancelRequest(function() {
+  Fliplet.Widget.complete();
+});
