@@ -14,6 +14,8 @@
   align-items: center;
   position: fixed;
   bottom: 0;
+  bottom: constant(safe-area-inset-bottom);
+  bottom: env(safe-area-inset-bottom);
   left: 0;
   right: 0;
   height: 44px;
@@ -82,6 +84,8 @@
   position: fixed;
   height: 44px;
   bottom: 0;
+  bottom: constant(safe-area-inset-bottom);
+  bottom: env(safe-area-inset-bottom);
   left: 0;
   right: 0;
   padding: 0 10px;
@@ -222,30 +226,14 @@
   }
 }
 
-.fl-menu-swipe-right-handler {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 15px;
-  z-index: 10;
-}
-
-.fl-menu-swipe-left-handler {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 15px;
-  z-index: 10;
-}
-
 /* Menu Overlay */
 .fl-menu {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 44px;
+  bottom: calc(constant(safe-area-inset-bottom) + 44px);
+  bottom: calc(constant(safe-area-inset-bottom) + 44px);
   left: 0;
   z-index: 20;
   pointer-events: none;
