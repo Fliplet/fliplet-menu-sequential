@@ -233,7 +233,7 @@
   right: 0;
   bottom: 44px;
   bottom: calc(constant(safe-area-inset-bottom) + 44px);
-  bottom: calc(constant(safe-area-inset-bottom) + 44px);
+  bottom: calc(env(safe-area-inset-bottom) + 44px);
   left: 0;
   z-index: 20;
   pointer-events: none;
