@@ -121,14 +121,18 @@ function init() {
       });
 
       // Swipe events
-      $('body').hammer().bind('swipeleft', function() {
+      Fliplet.Navigator.toggleSwipeBack(false);
+      var body = document.body;
+      var hammer = new Hammer(body);
+
+      hammer.on('swipeleft', function() {
         var linkAction = $('.fl-viewport-header li.active').next().data('fl-action');
 
         if (linkAction) {
           Fliplet.Navigate.to(linkAction);
         }
       });
-      $('body').hammer().bind('swiperight', function() {
+      hammer.on('swiperight', function() {
         var linkAction = $('.fl-viewport-header li.active').prev().data('fl-action');
         var revertLinkAction;
 
@@ -189,14 +193,18 @@ function init() {
       });
       
       // Swipe events
-      $('body').hammer().bind('swipeleft', function() {
+      Fliplet.Navigator.toggleSwipeBack(false);
+      var body = document.body;
+      var hammer = new Hammer(body);
+      
+      hammer.on('swipeleft', function() {
         var linkAction = $('.fl-viewport-menu li.active').next().not('.fl-menu-arrow').data('fl-action');
 
         if (linkAction) {
           Fliplet.Navigate.to(linkAction);
         }
       });
-      $('body').hammer().bind('swiperight', function() {
+      hammer.on('swiperight', function() {
         var linkAction = $('.fl-viewport-menu li.active').prev().not('.fl-menu-arrow').data('fl-action');
         var revertLinkAction;
 
