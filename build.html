@@ -55,8 +55,16 @@
       <div class="fl-menu-body-swipe">
         <div class="fl-list-default">
           <ul class="main-menu">
-            {{#each pages}}
-            <li class="linked" data-fl-navigate='{{{action}}}' data-page-id="{{pageId}}"><i class="fa fa-angle-right" aria-hidden="true"></i><span class="internal-link buttonControl">{{label}}</span></li>
+            {{#each pages as |page pageIndex|}}
+            <li class="linked {{#if page.icon}}with-icon{{/if}}" data-fl-navigate='{{{page.action}}}' data-page-id="{{page.pageId}}">
+              {{#if page.icon}}
+              <div class="fl-menu-icon">
+                <i class="{{page.icon}}"></i>
+              </div>
+              {{/if}}
+              <i class="fa fa-angle-right linked-icon" aria-hidden="true"></i>
+              <span class="internal-link buttonControl">{{page.label}}</span>
+            </li>
             {{/each}}
           </ul>
         </div>

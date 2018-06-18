@@ -386,9 +386,9 @@
 }
 
 .fl-menu-body-swipe .fl-list-default ul > li {
+  padding: 10px 10px 10px 10px;
   list-style: none;
   border-bottom: 1px solid rgba(51, 51, 51, 0.2);
-  padding: 10px 10px 10px 0;
   position: relative;
 }
 
@@ -397,11 +397,11 @@
 }
 
 .fl-menu-body-swipe .fl-list-default ul > li.linked {
+  padding-right: 44px;
   cursor: pointer;
-  padding: 0;
 }
 
-.fl-menu-body-swipe .fl-list-default ul > li .fa {
+.fl-menu-body-swipe .fl-list-default ul > li .linked-icon {
   display: none;
   position: absolute;
   width: 44px;
@@ -415,12 +415,29 @@
   color: #333;
 }
 
-.ffl-menu-body-swipe .fl-list-default ul > li.linked .fa {
+.fl-menu-body-swipe .fl-list-default ul > li.linked .linked-icon {
   display: block;
 }
 
+.fl-menu-body-swipe .fl-list-default ul > li.with-icon {
+  padding-left: 54px;
+  display: flex;
+  align-items: center;
+}
+
+.fl-menu-body-swipe .fl-list-default ul > li .fl-menu-icon {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+}
+
 .fl-app-menu .fl-list-default ul > li .buttonControl {
-  padding: 10px 44px 10px 10px;
   display: block;
   line-height: 24px;
 }
