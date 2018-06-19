@@ -10,6 +10,10 @@ function init() {
   var deviceWidth = $('body').width();
   var tabletBreakPoint = 640;
 
+  if ($('li.with-icon').length) {
+    $('.main-menu').addClass('with-icons');
+  }
+
   if (Modernizr.backdropfilter) {
     $('.body').addClass('backdropfilter');
   }
