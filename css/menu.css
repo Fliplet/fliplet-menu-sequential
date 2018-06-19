@@ -419,7 +419,8 @@
   display: block;
 }
 
-.fl-menu-body-swipe .fl-list-default ul > li.with-icon {
+.fl-menu-body-swipe .fl-list-default ul > li.with-icon,
+.fl-menu-body-swipe .fl-list-default ul > li.with-icon ~ li {
   padding-left: 54px;
   display: flex;
   align-items: center;
