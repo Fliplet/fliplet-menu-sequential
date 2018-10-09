@@ -2,6 +2,8 @@
 .fl-with-bottom-menu {
   -webkit-transition: padding 0.2s;
   transition: padding 0.2s;
+  padding-bottom: calc(44px + constant(safe-area-inset-bottom));
+  padding-bottom: calc(44px + env(safe-area-inset-bottom));
 }
 
 .fl-with-bottom-menu.fl-bottom-menu-hidden {
@@ -11,14 +13,14 @@
 .fl-viewport-header {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: fixed;
   bottom: 0;
-  bottom: constant(safe-area-inset-bottom);
-  bottom: env(safe-area-inset-bottom);
   left: 0;
   right: 0;
   height: 44px;
+  height: calc(44px + constant(safe-area-inset-bottom));
+  height: calc(44px + env(safe-area-inset-bottom));
   margin: 0 auto;
   line-height: 43px;
   -webkit-backdrop-filter: blur(5px);
@@ -36,6 +38,10 @@
   transform: translate3d(0, 0, 0);
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+}
+
+[data-has-notch] .fl-viewport-header {
+  height: 78px;
 }
 
 .fl-viewport-header .nav-center,
