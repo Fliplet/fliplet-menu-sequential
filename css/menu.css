@@ -10,7 +10,7 @@
   padding-top: 0;
 }
 
-[data-fl-widget-instance][data-widget-package="com.fliplet.menu.sequential"] {
+[data-fl-widget-instance][data-type="menu"] {
   position: fixed !important;
   bottom: 0;
   left: 0;
