@@ -11,7 +11,6 @@
 
 .supports-container .fl-page-content-wrapper {
   padding-bottom: 44px;
-  padding-bottom: calc(44px + env(safe-area-inset-bottom));
 }
 
 .fl-with-bottom-menu.fl-bottom-menu-hidden {
