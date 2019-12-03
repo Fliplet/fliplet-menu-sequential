@@ -15,7 +15,6 @@
 
 [data-has-notch].no-supports-container body,
 [data-has-notch].supports-container .fl-page-content-wrapper {
-  /* !important - to override the page.css style that sometimes is added after the widget styles */
   padding-bottom: 78px;
 }
 
