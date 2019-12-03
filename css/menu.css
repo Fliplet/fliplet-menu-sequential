@@ -11,7 +11,15 @@
 
 .supports-container .fl-page-content-wrapper {
   padding-bottom: 44px;
-  padding-bottom: calc(44px + env(safe-area-inset-bottom));
+}
+
+[data-has-notch].no-supports-container body,
+[data-has-notch].supports-container .fl-page-content-wrapper {
+  padding-bottom: 78px;
+}
+
+[data-has-notch].supports-container body {
+  padding-bottom: 0;
 }
 
 .fl-with-bottom-menu.fl-bottom-menu-hidden {
