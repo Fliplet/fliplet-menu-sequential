@@ -10,6 +10,11 @@
 }
 
 .supports-container .fl-page-content-wrapper {
+  padding-bottom: 0;
+}
+
+.supports-container .fl-with-bottom-menu.fl-bar-padding .fl-page-content-wrapper,
+.supports-container .fl-with-bottom-menu.fl-minimal-padding .fl-page-content-wrapper {
   padding-bottom: 44px;
 }
 
