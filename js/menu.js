@@ -10,6 +10,27 @@ function init() {
   var deviceWidth = $('body').width();
   var tabletBreakPoint = 640;
 
+  Fliplet.Hooks.on('addExitAppMenuLink', function () {
+    var $exitButton = $([
+      '<li class="linked with-icon" data-fl-exit-app>',
+        '<div class="fl-menu-icon">',
+          '<i class="fa fa-sign-out"></i>',
+        '</div>',
+        '<i class="fa fa-angle-right linked-icon" aria-hidden="true"></i>',
+        '<span class="internal-link buttonControl">Exit</span>',
+      '</li>'
+    ].join(''));
+
+    $exitButton.on('click', function onExitClick() {
+      Fliplet.Navigate.exitApp();
+    });
+
+    $menuElement.find('ul').append($exitButton);
+
+    // Prevent default "Exit" link from being added
+    return Promise.reject();
+  });
+
   if ($('li.with-icon').length) {
     $('.main-menu').addClass('with-icons');
   }
