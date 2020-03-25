@@ -1,4 +1,4 @@
-var $menuElement = $('[data-name="Swipe-yaroslav"]');
+var $menuElement = $('[data-name="Swipe"]');
 var menuInstanceId = $menuElement.data('id');
 
 if (menuInstanceId) {
