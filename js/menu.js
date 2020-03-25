@@ -1,4 +1,4 @@
-var $menuElement = $('[data-name="Swipe"]');
+var $menuElement = $('[data-name="Swipe-yaroslav"]');
 var menuInstanceId = $menuElement.data('id');
 
 if (menuInstanceId) {
@@ -14,7 +14,7 @@ function init() {
     var $exitButton = $([
       '<li class="linked with-icon" data-fl-exit-app>',
         '<div class="fl-menu-icon">',
-          '<i class="fa fa-sign-out"></i>',
+          '<i class="fa fa-fw fa-sign-out"></i>',
         '</div>',
         '<i class="fa fa-angle-right linked-icon" aria-hidden="true"></i>',
         '<span class="internal-link buttonControl">Exit</span>',
