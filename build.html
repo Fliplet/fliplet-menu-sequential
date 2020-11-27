@@ -1,10 +1,10 @@
 <!-- MENU -->
 <div class="fl-viewport-header hidden">
   {{#if pages}}
-    <span class="nav-left-arrow focus-outline" tabindex="0">
+    <span class="nav-left-arrow" tabindex="0">
       <i class="fa fa-angle-left"></i>
     </span>
-    <span class="nav-center focus-outline" data-fl-toggle-menu=".fl-menu" tabindex="0">
+    <span class="nav-center" data-fl-toggle-menu=".fl-menu" tabindex="0">
       <div class="hamburger hamburger--slider">
         <span class="hamburger-box">
           <span class="hamburger-inner">
@@ -14,13 +14,13 @@
         </span>
       </div>
     </span>
-    <span class="nav-right-arrow focus-outline" tabindex="0">
+    <span class="nav-right-arrow" tabindex="0">
       <i class="fa fa-angle-right"></i>
     </span>
     <div class="fl-sequential-screens-helper">
       <ul class="main-menu">
         {{#each pages}}
-          <li class="linked focus-outline" data-fl-action='{{{action}}}' data-page-id="{{pageId}}" tabindex="0"></li>
+          <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}" tabindex="0"></li>
         {{/each}}
       </ul>
     </div>
@@ -30,13 +30,13 @@
 <div class="fl-viewport-menu hidden">
   {{#if pages}}
   <ul class="main-menu">
-  	<li class="fl-menu-arrow fl-menu-prev focus-outline" tabindex="0">
+  	<li class="fl-menu-arrow fl-menu-prev" tabindex="0">
       <i class="fa fa-angle-left"></i> 
     </li>
     {{#each pages}}
-    <li class="linked focus-outline" data-fl-action='{{{action}}}' data-page-id="{{pageId}}" tabindex="0"></li>
+    <li class="linked" data-fl-action='{{{action}}}' data-page-id="{{pageId}}" tabindex="0"></li>
     {{/each}}
-    <li class="fl-menu-arrow fl-menu-next focus-outline" tabindex="0">
+    <li class="fl-menu-arrow fl-menu-next" tabindex="0">
       <i class="fa fa-angle-right"></i>
     </li>
   </ul>
@@ -59,7 +59,7 @@
         <div class="fl-list-default">
           <ul class="main-menu">
             {{#each pages as |page pageIndex|}}
-            <li class="linked {{#if page.icon}}with-icon{{/if}} focus-outline" data-fl-navigate='{{{page.action}}}' data-page-id="{{page.pageId}}" tabindex="0">
+            <li class="linked {{#if page.icon}}with-icon{{/if}}" data-fl-navigate='{{{page.action}}}' data-page-id="{{page.pageId}}" tabindex="0">
               {{#if page.icon}}
               <div class="fl-menu-icon">
                 <i class="{{page.icon}} fa-fw"></i>
