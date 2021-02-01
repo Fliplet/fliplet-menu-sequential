@@ -187,10 +187,10 @@ function init() {
       var hammer = new Hammer(body);
 
       hammer.on('swipeleft', function() {
-        goToNextScreens()
+        goToNextScreens();
       });
       hammer.on('swiperight', function() {
-        goToPrevScreen()
+        goToPrevScreen();
       });
 
       $('.fl-menu-overlay').click(function() {
