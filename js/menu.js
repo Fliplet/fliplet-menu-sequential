@@ -125,31 +125,59 @@ function init() {
       return linkAction;
     }
 
+    function goToNextScreen() {
+      var linkAction = $('.fl-viewport-header li.active').next().data('fl-action');
+
+      if (linkAction) {
+        Fliplet.Navigate.to(linkAction);
+      }
+    }
+
+    function goToPrevScreen() {
+      var linkAction = $('.fl-viewport-header li.active').prev().data('fl-action');
+      var revertLinkAction;
+
+      if (linkAction) {
+        revertLinkAction = revertTransition(linkAction);
+        Fliplet.Navigate.to(revertLinkAction);
+      }
+    }
+
     function attachBarHandlers() {
       // Selects current dot
       $('.fl-viewport-header li[data-page-id="' + pageId + '"]').addClass('active');
 
       // Click events
-      $('.fl-viewport-header .nav-right-arrow').on('click keydown', function() {
+      $('.fl-viewport-header .nav-right-arrow').on('click keydown', function(event) {
         if (event.type !== 'click' && event.which !== 32 && event.which !== 13) {
           return;
         }
 
-        var linkAction = $('.fl-viewport-header li.active').next().data('fl-action');
-        Fliplet.Navigate.to(linkAction);
+        goToNextScreen();
       });
 
-      $('.fl-viewport-header .nav-left-arrow').on('click keydown', function() {
+      $('.fl-viewport-header .nav-left-arrow').on('click keydown', function(event) {
         if (event.type !== 'click' && event.which !== 32 && event.which !== 13) {
           return;
         }
 
-        var linkAction = $('.fl-viewport-header li.active').prev().data('fl-action');
-        var revertLinkAction;
+        goToPrevScreen();
+      });
 
-        if (linkAction) {
-          revertLinkAction = revertTransition(linkAction);
-          Fliplet.Navigate.to(revertLinkAction);
+      $menuElement.on('keydown', function(event) {
+        switch (event.which) {
+          // Right arrow
+          case 39:
+            goToNextScreen();
+
+            break;
+          // Left arrow
+          case 37:
+            goToPrevScreen();
+
+            break;
+          default:
+            break;
         }
       });
 
@@ -159,20 +187,10 @@ function init() {
       var hammer = new Hammer(body);
 
       hammer.on('swipeleft', function() {
-        var linkAction = $('.fl-viewport-header li.active').next().data('fl-action');
-
-        if (linkAction) {
-          Fliplet.Navigate.to(linkAction);
-        }
+        goToNextScreens();
       });
       hammer.on('swiperight', function() {
-        var linkAction = $('.fl-viewport-header li.active').prev().data('fl-action');
-        var revertLinkAction;
-
-        if (linkAction) {
-          revertLinkAction = revertTransition(linkAction);
-          Fliplet.Navigate.to(revertLinkAction);
-        }
+        goToPrevScreen();
       });
 
       $('.fl-menu-overlay').click(function() {
