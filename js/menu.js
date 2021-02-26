@@ -208,11 +208,15 @@ function init() {
           return;
         }
     
-        $('.fl-viewport-header .hamburger').toggleClass('is-active');
-    
-        if (event.type === 'keydown') {
-          $('body').find('.fl-menu').toggleClass('active');
-        }
+        $menuElement.find('.fl-menu.fl-app-menu').toggleClass('hidden');
+        
+        setTimeout(function() {
+          $('.fl-viewport-header .hamburger').toggleClass('is-active');
+
+          if (event.type === 'keydown') {
+            $('body').find('.fl-menu').toggleClass('active');
+          }
+        }, 0);
       });
     }
 
