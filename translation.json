@@ -1,0 +1,12 @@
+{
+    "widgets": {
+        "menuSequential": {
+            "dataSource": {
+                "actions": {
+                    "exit": "Exit",
+                    "overlay": "About this app"
+                }
+            }
+        }
+    }
+}
