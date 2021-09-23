@@ -1,6 +1,8 @@
 var $menuElement = $('[data-name="Swipe"]');
 var menuInstanceId = $menuElement.data('id');
 
+$($menuElement).translate();
+
 if (menuInstanceId) {
   init();
 }
@@ -10,14 +12,14 @@ function init() {
   var deviceWidth = $('body').width();
   var tabletBreakPoint = 640;
 
-  Fliplet.Hooks.on('addExitAppMenuLink', function () {
+  Fliplet.Hooks.on('addExitAppMenuLink', function() {
     var $exitButton = $([
       '<li class="linked with-icon" data-fl-exit-app>',
-        '<div class="fl-menu-icon">',
-          '<i class="fa fa-fw fa-sign-out"></i>',
-        '</div>',
-        '<i class="fa fa-angle-right linked-icon" aria-hidden="true"></i>',
-        '<span class="internal-link buttonControl">' + T("widgets.menuSequential.dataSource.actions.exit") + '</span>',
+      '<div class="fl-menu-icon">',
+      '<i class="fa fa-fw fa-sign-out"></i>',
+      '</div>',
+      '<i class="fa fa-angle-right linked-icon" aria-hidden="true"></i>',
+      '<span class="internal-link buttonControl">' + T('widgets.menuSequential.dataSource.actions.exit') + '</span>',
       '</li>'
     ].join(''));
 
@@ -53,12 +55,16 @@ function init() {
 
   $(window).resize(function() {
     deviceWidth = $('body').width();
+
     if (deviceWidth <= tabletBreakPoint && data.style === 'no-controls-menu') {
       $('body').removeClass('fl-minimal-padding');
+
       return;
     }
+
     if (deviceWidth >= tabletBreakPoint && data.style === 'no-controls-menu') {
       $('body').addClass('fl-minimal-padding');
+
       return;
     }
   });
@@ -77,6 +83,7 @@ function init() {
       } else {
         $('.fl-menu-arrow.fl-menu-prev').removeClass('show');
       }
+
       if (forwardNavigation > 0) {
         $('.fl-menu-arrow.fl-menu-next').addClass('show');
       } else {
@@ -95,13 +102,14 @@ function init() {
       } else {
         $('.fl-viewport-header .nav-left-arrow').removeClass('show');
       }
+
       if (forwardNavigation > 0) {
         $('.fl-viewport-header .nav-right-arrow').addClass('show');
       } else {
         $('.fl-viewport-header .nav-right-arrow').removeClass('show');
       }
     }
-    
+
     function revertTransition(linkAction) {
       var transition;
       var direction;
@@ -122,6 +130,7 @@ function init() {
       }
 
       linkAction.transition = transition + '.' + direction;
+
       return linkAction;
     }
 
@@ -183,6 +192,7 @@ function init() {
 
       // Swipe events
       Fliplet.Navigator.toggleSwipeBack(false);
+
       var body = document.body;
       var hammer = new Hammer(body);
 
@@ -207,9 +217,9 @@ function init() {
         if (event.type !== 'click' && event.which !== 32 && event.which !== 13) {
           return;
         }
-    
+
         $menuElement.find('.fl-menu.fl-app-menu').toggleClass('hidden');
-        
+
         setTimeout(function() {
           $('.fl-viewport-header .hamburger').toggleClass('is-active');
 
@@ -223,16 +233,18 @@ function init() {
     function attachNonBarHandlers() {
       // Selects current dot
       $('.fl-viewport-menu li[data-page-id="' + pageId + '"]').addClass('active');
-      
+
       // Click events
       $('.fl-viewport-menu li[data-fl-action]').on('click', function() {
         var linkAction = $(this).data('fl-action');
         var foundElements = $(this).nextUntil('li.active');
         var lengthOfFound = $(this).nextUntil('li.active').length;
+        var revertLinkAction;
 
         if (lengthOfFound === 0 || $(foundElements[lengthOfFound - 1]).next().hasClass('active')) {
           revertLinkAction = revertTransition(linkAction);
           Fliplet.Navigate.to(revertLinkAction);
+
           return;
         }
 
@@ -241,9 +253,10 @@ function init() {
 
       $('.fl-menu-arrow.fl-menu-next').on('click', function() {
         var linkAction = $('.fl-viewport-menu li.active').next().not('.fl-menu-arrow').data('fl-action');
+
         Fliplet.Navigate.to(linkAction);
       });
-      
+
       $('.fl-menu-arrow.fl-menu-prev').on('click', function() {
         var linkAction = $('.fl-viewport-menu li.active').prev().not('.fl-menu-arrow').data('fl-action');
         var revertLinkAction;
@@ -253,12 +266,13 @@ function init() {
           Fliplet.Navigate.to(revertLinkAction);
         }
       });
-      
+
       // Swipe events
       Fliplet.Navigator.toggleSwipeBack(false);
+
       var body = document.body;
       var hammer = new Hammer(body);
-      
+
       hammer.on('swipeleft', function() {
         var linkAction = $('.fl-viewport-menu li.active').next().not('.fl-menu-arrow').data('fl-action');
 
