@@ -1,7 +1,6 @@
 {
   "extends": "fliplet",
   "globals": {
-    "T": "readonly",
     "Modernizr":  "readonly",
     "Hammer": "readonly",
     "goToNextScreens": "readonly"
