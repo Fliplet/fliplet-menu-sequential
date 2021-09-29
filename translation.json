@@ -1,7 +1,7 @@
 {
     "widgets": {
-        "menuSequential": {
-            "dataSource": {
+        "menu": {
+            "sequentialBar": {
                 "actions": {
                     "exit": "Exit",
                     "about": "About this app"
