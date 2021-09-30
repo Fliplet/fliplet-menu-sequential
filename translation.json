@@ -1,12 +1,12 @@
 {
-    "widgets": {
-        "menu": {
-            "sequential": {
-                "actions": {
-                    "exit": "Exit",
-                    "about": "About this app"
-                }
-            }
+  "widgets": {
+    "menu": {
+      "sequential": {
+        "actions": {
+          "exit": "Exit",
+          "about": "About this app"
         }
+      }
     }
+  }
 }
