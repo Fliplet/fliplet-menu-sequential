@@ -1,8 +1,6 @@
 var $menuElement = $('[data-name="Swipe"]');
 var menuInstanceId = $menuElement.data('id');
 
-$($menuElement).translate();
-
 if (menuInstanceId) {
   init();
 }
@@ -71,6 +69,8 @@ function init() {
 
   Fliplet().then(function() {
   	var pageId = Fliplet.Env.get('pageId');
+
+    $menuElement.translate();
 
     function checkNavigation() {
       var backNavigation = $('.fl-viewport-menu li.active').prev().not('.fl-menu-arrow').length;
