@@ -160,7 +160,7 @@
   height: 10px;
   border-radius: 10px;
   margin: 0 0 0 8px;
-  background-color: rgba(51,51,51,0.2);
+  background-color: rgba(51, 51, 51, 0.2);
   cursor: pointer;
 }
 
@@ -320,7 +320,7 @@
 }
 
 .fl-menu-panel-swipe:after {
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   border-color: transparent;
@@ -363,7 +363,6 @@
   opacity: 1;
   pointer-events: all;
 }
-
 
 .fl-menu.active .fl-menu-panel-swipe .fl-menu-panel-wrapper {
   max-height: 100%;
@@ -453,7 +452,7 @@
 }
 
 .fl-menu-body-swipe .fl-list-default ul > li.with-icon,
-.fl-menu-body-swipe .fl-list-default ul >.with-icons li {
+.fl-menu-body-swipe .fl-list-default ul > .with-icons li {
   padding-left: 54px;
   display: flex;
   align-items: center;
@@ -519,4 +518,10 @@
 .hamburger-inner::before,
 .hamburger-inner::after {
   background-color: #333333;
+}
+
+@media screen and (max-width: 640px) {
+  [data-widget-package="com.fliplet.menu.sequential"] .fl-menu.fl-app-menu {
+    bottom: calc(env(safe-area-inset-bottom) + 78px);
+  }
 }

@@ -205,6 +205,8 @@ function init() {
 
       $('.fl-menu-overlay').click(function() {
         $(this).closest('.fl-menu').removeClass('active');
+        $('.hamburger').removeClass('is-active');
+        $('.fl-menu').addClass('hidden');
       });
 
       $('[open-about-overlay]').on('click', function() {
