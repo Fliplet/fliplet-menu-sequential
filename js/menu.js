@@ -197,7 +197,7 @@ function init() {
       var hammer = new Hammer(body);
 
       hammer.on('swipeleft', function() {
-        goToNextScreens();
+        goToNextScreen();
       });
       hammer.on('swiperight', function() {
         goToPrevScreen();
