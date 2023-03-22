@@ -197,7 +197,7 @@ function init() {
       var hammer = new Hammer(body);
 
       hammer.on('swipeleft', function() {
-        goToNextScreens();
+        goToNextScreen();
       });
       hammer.on('swiperight', function() {
         goToPrevScreen();
@@ -205,6 +205,8 @@ function init() {
 
       $('.fl-menu-overlay').click(function() {
         $(this).closest('.fl-menu').removeClass('active');
+        $('.hamburger').removeClass('is-active');
+        $('.fl-menu').addClass('hidden');
       });
 
       $('[open-about-overlay]').on('click', function() {
