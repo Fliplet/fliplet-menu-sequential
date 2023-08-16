@@ -199,7 +199,8 @@ function init() {
       hammer.on('swipeleft', function() {
         goToNextScreen();
       });
-      hammer.on('swiperight', function() {
+      hammer.on('swiperight', function(event) {
+        event.stopPropagation();
         goToPrevScreen();
       });
 
