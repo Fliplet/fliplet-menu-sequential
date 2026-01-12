@@ -15,37 +15,39 @@ function attachKeyboardHandlers() {
     return;
   }
 
+  if (!window.visualViewport) {
+    return;
+  }
+
   var $body = $('body');
   var isKeyboardVisible = false;
-  var initialViewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  var initialViewportHeight = window.visualViewport.height;
 
-  if (window.visualViewport) {
-    /**
-     * Handles viewport resize and scroll events to detect keyboard visibility
-     * @private
-     */
-    var viewportHandler = function() {
-      var viewportHeight = window.visualViewport.height;
+  /**
+   * Handles viewport resize and scroll events to detect keyboard visibility
+   * @private
+   */
+  var viewportHandler = function() {
+    var viewportHeight = window.visualViewport.height;
 
-      // If viewport height is significantly smaller than initial height, keyboard is visible
-      // Threshold of 150px accounts for device variations
-      var heightDifference = initialViewportHeight - viewportHeight;
-      var keyboardVisible = heightDifference > 150;
+    // If viewport height is significantly smaller than initial height, keyboard is visible
+    // Threshold of 150px accounts for device variations
+    var heightDifference = initialViewportHeight - viewportHeight;
+    var keyboardVisible = heightDifference > 150;
 
-      if (keyboardVisible && !isKeyboardVisible) {
-        isKeyboardVisible = true;
-        $body.addClass('fl-sequential-keyboard-visible');
-      } else if (!keyboardVisible && isKeyboardVisible) {
-        isKeyboardVisible = false;
-        $body.removeClass('fl-sequential-keyboard-visible');
-        // Update initial height when keyboard is fully hidden
-        initialViewportHeight = viewportHeight;
-      }
-    };
+    if (keyboardVisible && !isKeyboardVisible) {
+      isKeyboardVisible = true;
+      $body.addClass('fl-sequential-keyboard-visible');
+    } else if (!keyboardVisible && isKeyboardVisible) {
+      isKeyboardVisible = false;
+      $body.removeClass('fl-sequential-keyboard-visible');
+      // Update initial height when keyboard is fully hidden
+      initialViewportHeight = viewportHeight;
+    }
+  };
 
-    window.visualViewport.addEventListener('resize', viewportHandler);
-    window.visualViewport.addEventListener('scroll', viewportHandler);
-  }
+  window.visualViewport.addEventListener('resize', viewportHandler);
+  window.visualViewport.addEventListener('scroll', viewportHandler);
 }
 
 if (menuInstanceId) {
