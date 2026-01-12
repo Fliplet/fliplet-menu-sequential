@@ -11,11 +11,7 @@ var menuInstanceId = $menuElement.data('id');
  * @returns {void}
  */
 function attachKeyboardHandlers() {
-  if (!Fliplet.Env.is('native')) {
-    return;
-  }
-
-  if (!window.visualViewport) {
+  if (!Fliplet.Env.is('native') || !window.visualViewport) {
     return;
   }
 
