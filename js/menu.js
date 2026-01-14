@@ -1,11 +1,58 @@
 var $menuElement = $('[data-name="Swipe"]');
 var menuInstanceId = $menuElement.data('id');
 
+/**
+ * Attaches keyboard visibility handlers to hide the sequential menu when keyboard appears on native devices
+ *
+ * This function uses the Visual Viewport API to detect when the native keyboard is shown or hidden.
+ * When the keyboard is visible, it adds the 'fl-sequential-keyboard-visible' class to the body element,
+ * which triggers CSS rules to hide the sequential menu (both bar and navigation controls).
+ *
+ * @returns {void}
+ */
+function attachKeyboardHandlers() {
+  if (!Fliplet.Env.is('native') || !window.visualViewport) {
+    return;
+  }
+
+  var $body = $('body');
+  var isKeyboardVisible = false;
+  var initialViewportHeight = window.visualViewport.height;
+
+  /**
+   * Handles viewport resize and scroll events to detect keyboard visibility
+   * @private
+   */
+  var viewportHandler = function() {
+    var viewportHeight = window.visualViewport.height;
+
+    // If viewport height is significantly smaller than initial height, keyboard is visible
+    // Threshold of 150px accounts for device variations
+    var heightDifference = initialViewportHeight - viewportHeight;
+    var keyboardVisible = heightDifference > 150;
+
+    if (keyboardVisible && !isKeyboardVisible) {
+      isKeyboardVisible = true;
+      $body.addClass('fl-sequential-keyboard-visible');
+    } else if (!keyboardVisible && isKeyboardVisible) {
+      isKeyboardVisible = false;
+      $body.removeClass('fl-sequential-keyboard-visible');
+      // Update initial height when keyboard is fully hidden
+      initialViewportHeight = viewportHeight;
+    }
+  };
+
+  window.visualViewport.addEventListener('resize', viewportHandler);
+  window.visualViewport.addEventListener('scroll', viewportHandler);
+}
+
 if (menuInstanceId) {
   init();
 }
 
 function init() {
+  attachKeyboardHandlers();
+
   var data = Fliplet.Widget.getData(menuInstanceId) || {};
   var deviceWidth = $('body').width();
   var tabletBreakPoint = 640;
