@@ -39,6 +39,16 @@
   z-index: 10;
 }
 
+/* Hide sequential menu when keyboard is visible on native devices */
+body.fl-sequential-keyboard-visible [data-fl-widget-instance][data-type="menu"] {
+  display: none;
+}
+
+body.fl-sequential-keyboard-visible .fl-viewport-header,
+body.fl-sequential-keyboard-visible .fl-viewport-menu {
+  display: none;
+}
+
 .fl-viewport-header {
   display: flex;
   justify-content: center;
