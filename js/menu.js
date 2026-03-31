@@ -57,6 +57,32 @@ function init() {
   var deviceWidth = $('body').width();
   var tabletBreakPoint = 640;
 
+  // Remove stale master page references that should have been replaced by production pages
+  var appPages = Fliplet.Env.get('appPages') || [];
+  var masterPageIds = {};
+
+  appPages.forEach(function(p) {
+    if (p.masterPageId) {
+      masterPageIds[p.masterPageId] = true;
+    }
+  });
+
+  if (data.pages) {
+    data.pages = data.pages.filter(function(page) {
+      return !(page.pageId && masterPageIds[page.pageId]);
+    });
+  }
+
+  Fliplet().then(function() {
+    $menuElement.find('li[data-page-id]').each(function() {
+      var pageId = $(this).attr('data-page-id');
+
+      if (pageId && masterPageIds[pageId]) {
+        $(this).remove();
+      }
+    });
+  });
+
   Fliplet.Hooks.on('addExitAppMenuLink', function() {
     var $exitButton = $([
       '<li class="linked with-icon" data-fl-exit-app>',
