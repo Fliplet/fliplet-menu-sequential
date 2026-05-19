@@ -77,9 +77,24 @@ function init() {
     $menuElement.find('li[data-page-id]').each(function() {
       var pageId = $(this).attr('data-page-id');
 
-      if (pageId && masterPageIds[pageId]) {
-        $(this).remove();
+      if (!pageId || !masterPageIds[pageId]) {
+        return;
       }
+
+      // Preserve logout items whose target screen happens to be a master page (PS-1939)
+      var nav = {};
+
+      try {
+        nav = JSON.parse($(this).attr('data-fl-navigate') || '{}');
+      } catch (e) {
+        // Malformed JSON — fall through and remove
+      }
+
+      if (nav.action === 'logout') {
+        return;
+      }
+
+      $(this).remove();
     });
   });
 
