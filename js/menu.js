@@ -81,7 +81,8 @@ function init() {
         return;
       }
 
-      // Preserve logout items whose target screen happens to be a master page (PS-1939)
+      // Cleanup only applies to items that actually navigate to that pageId as a screen view.
+      // Skip non-screen actions whose pageId is incidental (PS-1939, PS-1966)
       var nav = {};
 
       try {
@@ -90,7 +91,9 @@ function init() {
         // Malformed JSON — fall through and remove
       }
 
-      if (nav.action === 'logout') {
+      var nonScreenActions = ['logout', 'exit-app', 'url', 'popup', 'about-overlay'];
+
+      if (nonScreenActions.indexOf(nav.action) !== -1) {
         return;
       }
 
